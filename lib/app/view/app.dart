@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_app/app_router/router.dart';
+import 'package:my_app/favorites/bloc/favorites_bloc.dart';
 import 'package:my_app/l10n/l10n.dart';
 
 class App extends StatelessWidget {

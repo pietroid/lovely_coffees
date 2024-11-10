@@ -29,7 +29,7 @@ void main() {
     });
 
     testWidgets(
-        'when clicking the /favorites item, it shows the discover page and not show the discover page',
+        'when clicking the /favorites item, it shows the favorites page and not show the discover page',
         (tester) async {
       await tester.pumpAppWithDefaultRouter();
 
