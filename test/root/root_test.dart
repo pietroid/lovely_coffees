@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:my_app/discover/view/discover.dart';
-import 'package:my_app/favorites/view/favorites.dart';
+import 'package:my_app/discover/view/discover_page.dart';
+import 'package:my_app/favorites/view/favorites_page.dart';
 
 import '../helpers/helpers.dart';
 
@@ -24,8 +24,8 @@ void main() {
       await tester.tap(find.text('Discover'));
       await tester.pumpAndSettle();
 
-      expect(find.byType(DiscoverView), findsOneWidget);
-      expect(find.byType(FavoritesView), findsNothing);
+      expect(find.byType(DiscoverPage), findsOneWidget);
+      expect(find.byType(FavoritesPage), findsNothing);
     });
 
     testWidgets(
@@ -36,8 +36,8 @@ void main() {
       await tester.tap(find.text('Favorites'));
       await tester.pumpAndSettle();
 
-      expect(find.byType(DiscoverView), findsNothing);
-      expect(find.byType(FavoritesView), findsOneWidget);
+      expect(find.byType(DiscoverPage), findsNothing);
+      expect(find.byType(FavoritesPage), findsOneWidget);
     });
   });
 }

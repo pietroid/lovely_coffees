@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_app/discover/view/discover.dart';
-import 'package:my_app/favorites/view/favorites.dart';
+import 'package:my_app/discover/view/discover_page.dart';
+import 'package:my_app/favorites/view/favorites_page.dart';
 import 'package:my_app/root/root.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -27,7 +27,7 @@ class AppRouter {
                   GoRoute(
                     path: '/favorites',
                     pageBuilder: (context, state) => const NoTransitionPage(
-                      child: FavoritesView(),
+                      child: FavoritesPage(),
                     ),
                   ),
                 ],
@@ -38,7 +38,7 @@ class AppRouter {
                   GoRoute(
                     path: '/discover',
                     pageBuilder: (context, state) => const NoTransitionPage(
-                      child: DiscoverView(),
+                      child: DiscoverPage(),
                     ),
                   ),
                 ],
