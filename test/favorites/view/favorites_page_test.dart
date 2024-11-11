@@ -1,10 +1,11 @@
 import 'package:bloc_test/bloc_test.dart';
+import 'package:clock/clock.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:my_app/favorites/bloc/favorites_bloc.dart';
-import 'package:my_app/favorites/data/favorite.dart';
+import 'package:my_app/favorites/data/models/favorite.dart';
 import 'package:my_app/favorites/view/favorites_page.dart';
 
 import '../../helpers/helpers.dart';
@@ -56,8 +57,12 @@ void main() {
     group('Favorites list', () {
       testWidgets('when there is just one favorite, it should render one item',
           (tester) async {
-        when(() => favoritesBloc.state)
-            .thenReturn(FavoritesSuccess(favorites: [Favorite()]));
+        when(() => favoritesBloc.state).thenReturn(FavoritesSuccess(favorites: [
+          Favorite(
+            pathToImage: 'img1',
+            favoritedAt: clock.now(),
+          )
+        ]));
 
         await tester.pumpApp(
           MultiBlocProvider(
@@ -78,8 +83,14 @@ void main() {
           (tester) async {
         when(() => favoritesBloc.state).thenReturn(FavoritesSuccess(
           favorites: [
-            Favorite(),
-            Favorite(),
+            Favorite(
+              pathToImage: 'img1',
+              favoritedAt: clock.now(),
+            ),
+            Favorite(
+              pathToImage: 'img1',
+              favoritedAt: clock.now(),
+            ),
           ],
         ));
 
