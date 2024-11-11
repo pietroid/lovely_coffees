@@ -35,11 +35,13 @@ void main() {
 //     setUp(() {
 //       queryBuilder = _MockQueryBuilder();
 //       when(() => queryBuilder.findAll()).thenAnswer((_) async => []);
-//       when(() => queryBuilder.watch()).thenAnswer((_) => const Stream.empty());
+//       when(() => queryBuilder.watch()).
+//       thenAnswer((_) => const Stream.empty());
 
 //       favoriteIsarCollection = _MockIsarCollection();
 //       when(() => favoriteIsarCollection.where()).thenReturn(queryBuilder);
-//       when(() => favoriteIsarCollection.put(any())).thenAnswer((_) async => 0);
+//       when(() => favoriteIsarCollection.put(any())).
+//       thenAnswer((_) async => 0);
 //       when(() => favoriteIsarCollection.delete(any()))
 //           .thenAnswer((_) async => true);
 
@@ -47,7 +49,8 @@ void main() {
 //       when(() => isar.favorites).thenReturn(favoriteIsarCollection);
 //     });
 //     test(
-//         'fetchFavorites should return a list of favorites and call isar favorites',
+//         'fetchFavorites should return a list of favorites and call'
+//         ' isar favorites',
 //         () async {
 //       when(() => queryBuilder.findAll()).thenAnswer((_) async => [
 //             Favorite(pathToImage: 'img1', favoritedAt: clock.now()),

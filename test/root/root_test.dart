@@ -17,8 +17,10 @@ void main() {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
       );
-  // Because of the way routerConfig works, it's hard to maintain a navigationShell mock
-  // and render it on the widget tree. For this reason, it's better to just create a widget
+  // Because of the way routerConfig works, it's hard
+  // to maintain a navigationShell mock
+  // and render it on the widget tree. For this reason,
+  // it's better to just create a widget
   // with the default router and test the internals of this widget.
   late FavoritesRepository favoritesRepository;
   group('Root', () {

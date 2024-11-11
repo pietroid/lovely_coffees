@@ -57,12 +57,16 @@ void main() {
     group('Favorites list', () {
       testWidgets('when there is just one favorite, it should render one item',
           (tester) async {
-        when(() => favoritesBloc.state).thenReturn(FavoritesSuccess(favorites: [
-          Favorite(
-            pathToImage: 'img1',
-            favoritedAt: clock.now(),
-          )
-        ]));
+        when(() => favoritesBloc.state).thenReturn(
+          FavoritesSuccess(
+            favorites: [
+              Favorite(
+                pathToImage: 'img1',
+                favoritedAt: clock.now(),
+              ),
+            ],
+          ),
+        );
 
         await tester.pumpApp(
           MultiBlocProvider(
@@ -79,20 +83,22 @@ void main() {
       });
 
       testWidgets(
-          'when there are multiple favorites, it should render newer items first',
-          (tester) async {
-        when(() => favoritesBloc.state).thenReturn(FavoritesSuccess(
-          favorites: [
-            Favorite(
-              pathToImage: 'img1',
-              favoritedAt: clock.now(),
-            ),
-            Favorite(
-              pathToImage: 'img1',
-              favoritedAt: clock.now(),
-            ),
-          ],
-        ));
+          'when there are multiple favorites, it should render newer'
+          ' items first', (tester) async {
+        when(() => favoritesBloc.state).thenReturn(
+          FavoritesSuccess(
+            favorites: [
+              Favorite(
+                pathToImage: 'img1',
+                favoritedAt: clock.now(),
+              ),
+              Favorite(
+                pathToImage: 'img1',
+                favoritedAt: clock.now(),
+              ),
+            ],
+          ),
+        );
 
         await tester.pumpApp(
           MultiBlocProvider(
