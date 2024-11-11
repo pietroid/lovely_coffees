@@ -9,8 +9,6 @@ import 'package:my_app/favorites/view/favorites_page.dart';
 import 'package:my_app/l10n/l10n.dart';
 import 'package:rxdart/subjects.dart';
 
-import '../helpers/helpers.dart';
-
 class _MockFavoriteRepository extends Mock implements FavoritesRepository {}
 
 void main() {

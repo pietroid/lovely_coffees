@@ -17,8 +17,8 @@ void main() {
     });
     group('init', () {
       test(
-          'when init is called, it should stream favorites from the fetchFavorites from data source',
-          () {
+          'when init is called, it should stream favorites from the '
+          ' fetchFavorites from data source', () {
         final favorite1 =
             Favorite(pathToImage: 'img1', favoritedAt: DateTime.now());
         final favorite2 =
@@ -34,8 +34,7 @@ void main() {
         );
 
         final favoritesRepository =
-            FavoritesRepository(dataSource: favoritesDataSource);
-        favoritesRepository.init();
+            FavoritesRepository(dataSource: favoritesDataSource)..init();
 
         verify(() => favoritesDataSource.fetchFavorites()).called(1);
         expect(
@@ -50,9 +49,9 @@ void main() {
       });
 
       test(
-          'when init is called, it should stream favorites from the watchFavorites from data source',
-          () async {
-        final StreamController<List<Favorite>> controller = StreamController();
+          'when init is called, it should stream favorites from the '
+          'watchFavorites from data source', () async {
+        final controller = StreamController<List<Favorite>>();
 
         final favorite1 =
             Favorite(pathToImage: 'img1', favoritedAt: DateTime.now());
@@ -67,13 +66,12 @@ void main() {
         );
 
         final favoritesRepository =
-            FavoritesRepository(dataSource: favoritesDataSource);
-        favoritesRepository.init();
+            FavoritesRepository(dataSource: favoritesDataSource)..init();
 
         // Adding more events
         controller.add([favorite1, favorite2]);
         // Need to add this to listen to the stream result
-        await Future.delayed(Duration.zero);
+        await Future<void>.delayed(Duration.zero);
 
         await expectLater(
           favoritesRepository.favorites,
@@ -88,8 +86,8 @@ void main() {
     });
 
     test(
-        'when addFavorite is called, it should call addFavorite from data source',
-        () {
+        'when addFavorite is called, it should call addFavorite'
+        ' from data source', () {
       final favorite =
           Favorite(pathToImage: 'img1', favoritedAt: DateTime.now());
 
@@ -97,16 +95,15 @@ void main() {
         (_) async {},
       );
 
-      final favoritesRepository =
-          FavoritesRepository(dataSource: favoritesDataSource);
-      favoritesRepository.addFavorite(favorite);
+      FavoritesRepository(dataSource: favoritesDataSource)
+          .addFavorite(favorite);
 
       verify(() => favoritesDataSource.addFavorite(favorite)).called(1);
     });
 
     test(
-        'when removeFavorite is called, it should call removeFavorite from data source',
-        () {
+        'when removeFavorite is called, it should call removeFavorite '
+        'from data source', () {
       final favorite =
           Favorite(pathToImage: 'img1', favoritedAt: DateTime.now());
 
@@ -114,9 +111,8 @@ void main() {
         (_) async {},
       );
 
-      final favoritesRepository =
-          FavoritesRepository(dataSource: favoritesDataSource);
-      favoritesRepository.removeFavorite(favorite);
+      FavoritesRepository(dataSource: favoritesDataSource)
+          .removeFavorite(favorite);
 
       verify(() => favoritesDataSource.removeFavorite(favorite)).called(1);
     });

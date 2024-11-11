@@ -22,15 +22,15 @@ class Root extends StatelessWidget {
           )..add(FavoritesLoad()),
         ),
       ],
-      child: _RootContent(
+      child: RootContent(
         navigationShell: navigationShell,
       ),
     );
   }
 }
 
-class _RootContent extends StatelessWidget {
-  const _RootContent({
+class RootContent extends StatelessWidget {
+  const RootContent({
     required this.navigationShell,
     super.key,
   });

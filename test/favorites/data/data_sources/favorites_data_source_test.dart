@@ -1,7 +1,10 @@
 // There is no good way to test isar currently, because it's very hard to mock.
-// Below is an example of approach I tried, but unsuccessfully, because it depends on a private variable we can't access.
-// There seems to be a way to test it, however, didn't see very maintanable for me as it requires actual initialization of isar
-// That requires to know the path to be used in the database, which is not ideal for testing.
+// Below is an example of approach I tried, but unsuccessfully, because it
+// depends on a private variable we can't access.
+// There seems to be a way to test it, however, didn't see very maintanable
+// for me as it requires actual initialization of isar
+// That requires to know the path to be used in the database,
+// which is not ideal for testing.
 // Solution mentioned: https://github.com/isar/isar/issues/1147
 import 'package:flutter_test/flutter_test.dart';
 

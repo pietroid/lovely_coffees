@@ -41,7 +41,7 @@ void main() {
       ),
       act: (bloc) => bloc.add(FavoritesUpdate(favorites: [favoriteFake])),
       expect: () => <FavoritesState>[
-        FavoritesSuccess(favorites: [favoriteFake])
+        FavoritesSuccess(favorites: [favoriteFake]),
       ],
     );
   });
