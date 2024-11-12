@@ -1,8 +1,13 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:my_app/app_router/router.dart';
+import 'package:my_app/discover/data/models/coffee_image.dart';
+import 'package:my_app/discover/data/repositories/discover_repository.dart';
 import 'package:my_app/discover/view/discover_page.dart';
 import 'package:my_app/favorites/data/repositories/favorites_repository.dart';
 import 'package:my_app/favorites/view/favorites_page.dart';
@@ -11,7 +16,12 @@ import 'package:rxdart/subjects.dart';
 
 class _MockFavoriteRepository extends Mock implements FavoritesRepository {}
 
+class _MockDiscoverRepository extends Mock implements DiscoverRepository {}
+
 void main() {
+  const fakeImageUrl = 'fakeImageUrl';
+  final fakeImage = base64Decode(
+      "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=");
   Widget appWithDefaultRouter() => MaterialApp.router(
         routerConfig: AppRouter().router,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -23,17 +33,28 @@ void main() {
   // it's better to just create a widget
   // with the default router and test the internals of this widget.
   late FavoritesRepository favoritesRepository;
+  late DiscoverRepository discoverRepository;
   group('Root', () {
     setUp(() {
       favoritesRepository = _MockFavoriteRepository();
+      discoverRepository = _MockDiscoverRepository();
       when(() => favoritesRepository.favorites)
           .thenAnswer((_) => BehaviorSubject.seeded([]));
+      when(() => discoverRepository.fetchRandomCoffeeImage()).thenAnswer(
+        (_) => Future.value(
+          CoffeeImage(
+            url: fakeImageUrl,
+            image: fakeImage,
+          ),
+        ),
+      );
     });
     testWidgets('renders bottom navigation bar', (tester) async {
       await tester.pumpWidget(
         MultiRepositoryProvider(
           providers: [
             RepositoryProvider(create: (_) => favoritesRepository),
+            RepositoryProvider(create: (_) => discoverRepository),
           ],
           child: appWithDefaultRouter(),
         ),
@@ -49,6 +70,7 @@ void main() {
         MultiRepositoryProvider(
           providers: [
             RepositoryProvider(create: (_) => favoritesRepository),
+            RepositoryProvider(create: (_) => discoverRepository),
           ],
           child: appWithDefaultRouter(),
         ),
@@ -68,6 +90,7 @@ void main() {
         MultiRepositoryProvider(
           providers: [
             RepositoryProvider(create: (_) => favoritesRepository),
+            RepositoryProvider(create: (_) => discoverRepository),
           ],
           child: appWithDefaultRouter(),
         ),
