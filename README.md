@@ -2,7 +2,7 @@
 
 Do you love coffee? This is the right app for you. Come here, grab a coffee, and let's select the best coffee pictures ☕
 
-![image](https://github.com/user-attachments/assets/6d588037-2254-41f0-93cb-372f7297e361)
+<img src="https://github.com/user-attachments/assets/6d588037-2254-41f0-93cb-372f7297e361" width="300"/>
 
 ![coverage][coverage_badge]
 [![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
