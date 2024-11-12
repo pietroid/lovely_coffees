@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:my_app/discover/data/models/coffee_image.dart';
 import 'package:my_app/discover/data/repositories/discover_repository.dart';
-import 'package:my_app/discover/view/discover_carousel_item.dart';
+import 'package:my_app/discover/view/widgets/discover_carousel_item.dart';
 import 'package:my_app/discover/view/discover_page.dart';
 
 import '../../helpers/helpers.dart';
