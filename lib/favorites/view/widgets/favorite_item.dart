@@ -30,6 +30,12 @@ class _FavoriteItemState extends State<FavoriteItem> {
   }
 
   @override
+  void dispose() {
+    _favoriteItemBloc.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(12),
