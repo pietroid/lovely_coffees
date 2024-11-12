@@ -18,14 +18,16 @@ class FavoritesPage extends StatelessWidget {
             FavoritesEmpty() => Padding(
                 padding: const EdgeInsets.all(10),
                 child: Center(
-                    child: Text(
-                  textAlign: TextAlign.center,
-                  context.l10n.favoritesEmptyStateText,
-                )),
+                  child: Text(
+                    textAlign: TextAlign.center,
+                    context.l10n.favoritesEmptyStateText,
+                  ),
+                ),
               ),
             FavoritesSuccess() => ListView.builder(
                 itemBuilder: (context, index) => FavoriteItem(
                   name: state.favorites[index].pathToImage,
+                  key: Key(state.favorites[index].pathToImage),
                 ),
                 itemCount: state.favorites.length,
               ),

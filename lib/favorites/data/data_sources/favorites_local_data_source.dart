@@ -9,7 +9,7 @@ class FavoritesLocalDataSource {
   final Isar isar;
 
   Future<List<Favorite>> fetchFavorites() async {
-    return isar.favorites.where().findAll();
+    return isar.favorites.where().sortByFavoritedAtDesc().findAll();
   }
 
   Future<void> addFavorite(Favorite favorite) async {
@@ -19,6 +19,6 @@ class FavoritesLocalDataSource {
   }
 
   Stream<List<Favorite>> watchFavorites() {
-    return isar.favorites.where().watch();
+    return isar.favorites.where().sortByFavoritedAtDesc().watch();
   }
 }
