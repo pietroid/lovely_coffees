@@ -6,17 +6,28 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:my_app/favorites/blocs/favorites/favorites_bloc.dart';
 import 'package:my_app/favorites/data/models/favorite.dart';
+import 'package:my_app/favorites/data/repositories/favorite_item_repository.dart';
 import 'package:my_app/favorites/view/favorites_page.dart';
+import 'package:my_app/favorites/view/widgets/favorite_item.dart';
 
 import '../../helpers/helpers.dart';
+import '../../helpers/shared_fixtures.dart';
 
 class _MockFavoritesBloc extends MockBloc<FavoritesEvent, FavoritesState>
     implements FavoritesBloc {}
 
+class _MockFavoriteItemRepository extends Mock
+    implements FavoriteItemRepository {}
+
 void main() {
   late FavoritesBloc favoritesBloc;
+  late FavoriteItemRepository favoriteItemRepository;
   setUp(() {
     favoritesBloc = _MockFavoritesBloc();
+    favoriteItemRepository = _MockFavoriteItemRepository();
+
+    when(() => favoriteItemRepository.fetchImageWithPath(any()))
+        .thenAnswer((_) => Future.value(fakeImage));
   });
   group('FavoritesPage', () {
     testWidgets('when it is loading, it should render the skeleton',
@@ -74,12 +85,13 @@ void main() {
               BlocProvider.value(
                 value: favoritesBloc,
               ),
+              RepositoryProvider(create: (_) => favoriteItemRepository),
             ],
             child: const FavoritesPage(),
           ),
         );
 
-        expect(find.text('Favorite 0'), findsOneWidget);
+        expect(find.byType(FavoriteItem), findsOneWidget);
       });
 
       testWidgets(
@@ -106,13 +118,13 @@ void main() {
               BlocProvider.value(
                 value: favoritesBloc,
               ),
+              RepositoryProvider(create: (_) => favoriteItemRepository),
             ],
             child: const FavoritesPage(),
           ),
         );
 
-        expect(find.text('Favorite 0'), findsOneWidget);
-        expect(find.text('Favorite 1'), findsOneWidget);
+        expect(find.byType(FavoriteItem), findsNWidgets(2));
       });
     });
   });

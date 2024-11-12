@@ -1,19 +1,37 @@
 import 'dart:async';
+import 'dart:typed_data';
 
+import 'package:clock/clock.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:my_app/favorites/data/data_sources/favorites_image_data_source.dart';
 import 'package:my_app/favorites/data/data_sources/favorites_local_data_source.dart';
 import 'package:my_app/favorites/data/models/favorite.dart';
 import 'package:my_app/favorites/data/repositories/favorites_repository.dart';
 
-class _MockFavoritesDataSource extends Mock implements FavoritesDataSource {}
+class _MockFavoritesLocalDataSource extends Mock
+    implements FavoritesLocalDataSource {}
+
+class _MockFavoritesImageDataSource extends Mock
+    implements FavoritesImageDataSource {}
 
 void main() {
-  late FavoritesDataSource favoritesDataSource;
+  late FavoritesLocalDataSource favoritesLocalDataSource;
+  late FavoritesImageDataSource favoritesImageDataSource;
 
   group('FavoritesRepository', () {
+    setUpAll(() {
+      registerFallbackValue(
+        Favorite(
+          pathToImage: '',
+          favoritedAt: clock.now(),
+        ),
+      );
+      registerFallbackValue(Uint8List(0));
+    });
     setUp(() {
-      favoritesDataSource = _MockFavoritesDataSource();
+      favoritesLocalDataSource = _MockFavoritesLocalDataSource();
+      favoritesImageDataSource = _MockFavoritesImageDataSource();
     });
     group('init', () {
       test(
@@ -24,19 +42,21 @@ void main() {
         final favorite2 =
             Favorite(pathToImage: 'img2', favoritedAt: DateTime.now());
 
-        when(() => favoritesDataSource.fetchFavorites()).thenAnswer(
+        when(() => favoritesLocalDataSource.fetchFavorites()).thenAnswer(
           (_) async => [favorite1, favorite2],
         );
-        when(() => favoritesDataSource.watchFavorites()).thenAnswer(
+        when(() => favoritesLocalDataSource.watchFavorites()).thenAnswer(
           (_) => Stream.fromIterable([
             [],
           ]),
         );
 
-        final favoritesRepository =
-            FavoritesRepository(dataSource: favoritesDataSource)..init();
+        final favoritesRepository = FavoritesRepository(
+          localDataSource: favoritesLocalDataSource,
+          imageDataSource: favoritesImageDataSource,
+        )..init();
 
-        verify(() => favoritesDataSource.fetchFavorites()).called(1);
+        verify(() => favoritesLocalDataSource.fetchFavorites()).called(1);
         expect(
           favoritesRepository.favorites,
           emits(
@@ -58,15 +78,17 @@ void main() {
         final favorite2 =
             Favorite(pathToImage: 'img2', favoritedAt: DateTime.now());
 
-        when(() => favoritesDataSource.fetchFavorites()).thenAnswer(
+        when(() => favoritesLocalDataSource.fetchFavorites()).thenAnswer(
           (_) async => [],
         );
-        when(() => favoritesDataSource.watchFavorites()).thenAnswer(
+        when(() => favoritesLocalDataSource.watchFavorites()).thenAnswer(
           (_) => controller.stream,
         );
 
-        final favoritesRepository =
-            FavoritesRepository(dataSource: favoritesDataSource)..init();
+        final favoritesRepository = FavoritesRepository(
+          localDataSource: favoritesLocalDataSource,
+          imageDataSource: favoritesImageDataSource,
+        )..init();
 
         // Adding more events
         controller.add([favorite1, favorite2]);
@@ -87,34 +109,31 @@ void main() {
 
     test(
         'when addFavorite is called, it should call addFavorite'
-        ' from data source', () {
-      final favorite =
-          Favorite(pathToImage: 'img1', favoritedAt: DateTime.now());
-
-      when(() => favoritesDataSource.addFavorite(favorite)).thenAnswer(
+        ' from data source', () async {
+      when(() => favoritesLocalDataSource.addFavorite(any())).thenAnswer(
+        (_) async {},
+      );
+      when(() => favoritesImageDataSource.saveImageWithPath(any(), any()))
+          .thenAnswer(
         (_) async {},
       );
 
-      FavoritesRepository(dataSource: favoritesDataSource)
-          .addFavorite(favorite);
-
-      verify(() => favoritesDataSource.addFavorite(favorite)).called(1);
-    });
-
-    test(
-        'when removeFavorite is called, it should call removeFavorite '
-        'from data source', () {
-      final favorite =
-          Favorite(pathToImage: 'img1', favoritedAt: DateTime.now());
-
-      when(() => favoritesDataSource.removeFavorite(favorite)).thenAnswer(
-        (_) async {},
+      await FavoritesRepository(
+        localDataSource: favoritesLocalDataSource,
+        imageDataSource: favoritesImageDataSource,
+      ).addFavorite(
+        image: Uint8List(0),
+        imageUrl: 'https://url/img1.png',
       );
 
-      FavoritesRepository(dataSource: favoritesDataSource)
-          .removeFavorite(favorite);
+      final capturedFavorite = verify(() =>
+              favoritesLocalDataSource.addFavorite(captureAny<Favorite>()))
+          .captured
+          .first as Favorite;
+      expect(capturedFavorite.pathToImage, 'img1.png');
 
-      verify(() => favoritesDataSource.removeFavorite(favorite)).called(1);
+      verify(() => favoritesImageDataSource.saveImageWithPath(any(), any()))
+          .called(1);
     });
   });
 }

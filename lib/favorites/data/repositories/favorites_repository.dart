@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:typed_data';
 
+import 'package:clock/clock.dart';
 import 'package:my_app/favorites/data/data_sources/favorites_image_data_source.dart';
 import 'package:my_app/favorites/data/data_sources/favorites_local_data_source.dart';
 import 'package:my_app/favorites/data/models/favorite.dart';
@@ -32,7 +33,7 @@ class FavoritesRepository {
     await imageDataSource.saveImageWithPath(imagePath, image);
     final favorite = Favorite(
       pathToImage: imagePath,
-      favoritedAt: DateTime.now(),
+      favoritedAt: clock.now(),
     );
     await localDataSource.addFavorite(favorite);
   }
