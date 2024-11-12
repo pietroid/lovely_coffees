@@ -9,14 +9,11 @@ import 'package:my_app/discover/data/repositories/discover_repository.dart';
 import 'package:my_app/discover/view/widgets/discover_carousel_item.dart';
 
 import '../../../helpers/helpers.dart';
+import '../../../helpers/shared_fixtures.dart';
 
 class _MockDiscoverRepository extends Mock implements DiscoverRepository {}
 
 void main() {
-  const fakeImageUrl = 'fakeImageUrl';
-  final fakeImage = base64Decode(
-    '/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=',
-  );
   late DiscoverRepository discoverRepository;
 
   group('DiscoverCarouselItemTest', () {
@@ -30,7 +27,7 @@ void main() {
           .thenAnswer((_) async {
         await Future<void>.delayed(const Duration(milliseconds: 10));
         return CoffeeImage(
-          url: fakeImageUrl,
+          url: fakeImageFullUrl,
           image: fakeImage,
         );
       });
@@ -54,7 +51,7 @@ void main() {
       when(() => discoverRepository.fetchRandomCoffeeImage())
           .thenAnswer((_) async {
         return CoffeeImage(
-          url: fakeImageUrl,
+          url: fakeImageFullUrl,
           image: fakeImage,
         );
       });

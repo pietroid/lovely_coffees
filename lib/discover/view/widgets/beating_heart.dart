@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class HeartBeatAnimation extends StatefulWidget {
+  const HeartBeatAnimation({super.key});
+
   @override
-  _HeartBeatAnimationState createState() => _HeartBeatAnimationState();
+  State<HeartBeatAnimation> createState() => _HeartBeatAnimationState();
 }
 
 class _HeartBeatAnimationState extends State<HeartBeatAnimation>
@@ -24,7 +26,7 @@ class _HeartBeatAnimationState extends State<HeartBeatAnimation>
         }
       });
 
-    _animation = Tween<double>(begin: 0, end: 2.0).animate(
+    _animation = Tween<double>(begin: 0, end: 2).animate(
       CurvedAnimation(
         parent: _controller,
         curve: Curves.easeInOut,
@@ -50,14 +52,14 @@ class _HeartBeatAnimationState extends State<HeartBeatAnimation>
               BoxShadow(
                 color: Colors.black.withOpacity(0.3),
                 blurRadius: 10,
-                offset: Offset(0, 4),
+                offset: const Offset(0, 4),
               ),
             ],
           ),
           child: const Icon(
             Icons.favorite,
             color: Colors.red,
-            size: 100.0,
+            size: 100,
           ),
         ),
       ),

@@ -40,29 +40,32 @@ class _DiscoverCarouselItemState extends State<DiscoverCarouselItem> {
           DiscoverLoading() => const Center(
               child: CircularProgressIndicator(),
             ),
-          DiscoverLoaded() => Stack(alignment: Alignment.center, children: [
-              Padding(
-                padding: const EdgeInsets.all(12),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: GestureDetector(
-                    onDoubleTap: () {
-                      context.read<FavoritesBloc>().add(
-                            FavoritesAdd(
-                              image: state.image,
-                              imageUrl: state.name,
-                            ),
-                          );
-                      setState(() {
-                        isFavorited = true;
-                      });
-                    },
-                    child: Image.memory(state.image),
+          DiscoverLoaded() => Stack(
+              alignment: Alignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: GestureDetector(
+                      onDoubleTap: () {
+                        context.read<FavoritesBloc>().add(
+                              FavoritesAdd(
+                                image: state.image,
+                                imageUrl: state.name,
+                              ),
+                            );
+                        setState(() {
+                          isFavorited = true;
+                        });
+                      },
+                      child: Image.memory(state.image),
+                    ),
                   ),
                 ),
-              ),
-              if (isFavorited) HeartBeatAnimation(),
-            ]),
+                if (isFavorited) const HeartBeatAnimation(),
+              ],
+            ),
           DiscoverFailure() => Center(
               child: Text(context.l10n.imageLoadingErrorText),
             ),

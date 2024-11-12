@@ -63,8 +63,9 @@ void main() {
       );
 
       expect(
-        find.text(
-            'There are no favorites yet.\n Go to discover, swipe up to see lovely coffees ☕ \n Double tap to favorite! ❤️ '),
+        find.text('There are no favorites yet.\n Go to discover, swipe up'
+            ' to see lovely'
+            ' coffees ☕ \n Double tap to favorite! ❤️ '),
         findsOneWidget,
       );
     });
@@ -105,11 +106,11 @@ void main() {
           FavoritesSuccess(
             favorites: [
               Favorite(
-                pathToImage: 'img1',
+                pathToImage: fakeImageName,
                 favoritedAt: clock.now(),
               ),
               Favorite(
-                pathToImage: 'img1',
+                pathToImage: fakeImageName,
                 favoritedAt: clock.now(),
               ),
             ],
