@@ -1,7 +1,19 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
+    "favoritesBottomBarItemLabel": "Favorites",
+    "@favoritesBottomBarItemLabel": {
+        "description": "Label shown on favorites bottom bar item"
+    },
+    "discoverBottomBarItemLabel": "Discover",
+    "@favoritesBottomBarItemLabel": {
+        "description": "Label shown on discover bottom bar item"
+    },
+    "favoritesEmptyStateText": "There are no favorites yet.\n Go to discover, swipe up to see lovely coffees ☕ \n Double tap to favorite! ❤️ ",
+    "@favoritesEmptyStateText": {
+        "description": "Empty state of favorites screen"
+    },
+    "imageLoadingErrorText": "💔 Error loading your next lovely coffee",
+    "@imageLoadingErrorText": {
+        "description": "Error label on discover screen"
     }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_app/discover/bloc/discover_bloc.dart';
 import 'package:my_app/discover/data/repositories/discover_repository.dart';
 import 'package:my_app/favorites/blocs/favorites/favorites_bloc.dart';
+import 'package:my_app/l10n/l10n.dart';
 
 class DiscoverCarouselItem extends StatefulWidget {
   const DiscoverCarouselItem({super.key});
@@ -50,8 +51,8 @@ class _DiscoverCarouselItemState extends State<DiscoverCarouselItem> {
                       ),
                   child: Image.memory(state.image),
                 ),
-              DiscoverFailure() => const Center(
-                  child: Text('Failed to load image'),
+              DiscoverFailure() => Center(
+                  child: Text(context.l10n.imageLoadingErrorText),
                 ),
             };
           },
