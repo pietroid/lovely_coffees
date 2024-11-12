@@ -12,10 +12,15 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     required this.favoritesRepository,
   }) : super(FavoritesLoading()) {
     on<FavoritesUpdate>((event, emit) {
-      emit(FavoritesSuccess(favorites: event.favorites));
+      if (event.favorites.isEmpty) {
+        emit(FavoritesEmpty());
+      } else {
+        emit(FavoritesSuccess(favorites: event.favorites));
+      }
     });
 
     on<FavoritesLoad>((event, emit) async {
+      favoritesRepository.init();
       favoritesRepository.favorites.listen((favorites) {
         add(
           FavoritesUpdate(

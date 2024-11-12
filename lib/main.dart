@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:isar/isar.dart';
 import 'package:my_app/app/app.dart';
 import 'package:my_app/bootstrap.dart';
@@ -8,6 +9,7 @@ import 'package:path_provider/path_provider.dart';
 
 void main() {
   bootstrap(() async {
+    WidgetsFlutterBinding.ensureInitialized();
     final isarDirectory = await getApplicationDocumentsDirectory();
     final isar = await Isar.open(
       [

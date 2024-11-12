@@ -24,25 +24,42 @@ void main() {
           .thenAnswer((_) => BehaviorSubject.seeded([]));
     });
     blocTest<FavoritesBloc, FavoritesState>(
-      'when FavoritesLoad is added, it should start listening to favorites',
+      'when FavoritesLoad is added, it should start listening to favorites and '
+      'should call favoritesRepository.init',
       build: () => FavoritesBloc(
         favoritesRepository: favoritesRepository,
       ),
       act: (bloc) => bloc.add(FavoritesLoad()),
       verify: (_) {
         verify(() => favoritesRepository.favorites).called(1);
+        verify(() => favoritesRepository.init()).called(1);
       },
     );
 
-    blocTest<FavoritesBloc, FavoritesState>(
-      'when FavoritesUpdate is added, it should emit FavoritesSuccess',
-      build: () => FavoritesBloc(
-        favoritesRepository: favoritesRepository,
-      ),
-      act: (bloc) => bloc.add(FavoritesUpdate(favorites: [favoriteFake])),
-      expect: () => <FavoritesState>[
-        FavoritesSuccess(favorites: [favoriteFake]),
-      ],
-    );
+    group('favoritesUpdate', () {
+      blocTest<FavoritesBloc, FavoritesState>(
+        'when FavoritesUpdate is added and list is not empty, '
+        'it should emit FavoritesSuccess',
+        build: () => FavoritesBloc(
+          favoritesRepository: favoritesRepository,
+        ),
+        act: (bloc) => bloc.add(FavoritesUpdate(favorites: [favoriteFake])),
+        expect: () => <FavoritesState>[
+          FavoritesSuccess(favorites: [favoriteFake]),
+        ],
+      );
+
+      blocTest<FavoritesBloc, FavoritesState>(
+        'when FavoritesUpdate is added and list is empty, '
+        'it should emit FavoritesEmpty',
+        build: () => FavoritesBloc(
+          favoritesRepository: favoritesRepository,
+        ),
+        act: (bloc) => bloc.add(FavoritesUpdate(favorites: const [])),
+        expect: () => <FavoritesState>[
+          FavoritesEmpty(),
+        ],
+      );
+    });
   });
 }
