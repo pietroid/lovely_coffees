@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_app/discover/view/discover_page.dart';
-import 'package:my_app/favorites/view/favorites_page.dart';
-import 'package:my_app/root/root.dart';
+import 'package:lovely_coffees/discover/view/discover_page.dart';
+import 'package:lovely_coffees/favorites/view/favorites_page.dart';
+import 'package:lovely_coffees/root/root.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorFavoritesKey =

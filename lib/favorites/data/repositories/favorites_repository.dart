@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:clock/clock.dart';
-import 'package:my_app/favorites/data/data_sources/favorites_image_data_source.dart';
-import 'package:my_app/favorites/data/data_sources/favorites_local_data_source.dart';
-import 'package:my_app/favorites/data/models/favorite.dart';
+import 'package:lovely_coffees/favorites/data/data_sources/favorites_image_data_source.dart';
+import 'package:lovely_coffees/favorites/data/data_sources/favorites_local_data_source.dart';
+import 'package:lovely_coffees/favorites/data/models/favorite.dart';
 import 'package:rxdart/subjects.dart';
 
 class FavoritesRepository {

@@ -1,8 +1,8 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:my_app/favorites/blocs/favorite_item/favorite_item_bloc.dart';
-import 'package:my_app/favorites/data/repositories/favorite_item_repository.dart';
+import 'package:lovely_coffees/favorites/blocs/favorite_item/favorite_item_bloc.dart';
+import 'package:lovely_coffees/favorites/data/repositories/favorite_item_repository.dart';
 
 import '../../helpers/shared_fixtures.dart';
 

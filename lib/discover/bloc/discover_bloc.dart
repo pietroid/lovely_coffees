@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:my_app/discover/data/repositories/discover_repository.dart';
+import 'package:lovely_coffees/discover/data/repositories/discover_repository.dart';
 
 part 'discover_event.dart';
 part 'discover_state.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:my_app/discover/data/data_sources/discover_data_source.dart';
-import 'package:my_app/discover/data/repositories/discover_repository.dart';
+import 'package:lovely_coffees/discover/data/data_sources/discover_data_source.dart';
+import 'package:lovely_coffees/discover/data/repositories/discover_repository.dart';
 
 import '../../../helpers/shared_fixtures.dart';
 

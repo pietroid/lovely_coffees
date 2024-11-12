@@ -1,15 +1,15 @@
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:isar/isar.dart';
-import 'package:my_app/app/app.dart';
-import 'package:my_app/bootstrap.dart';
-import 'package:my_app/discover/data/data_sources/discover_data_source.dart';
-import 'package:my_app/discover/data/repositories/discover_repository.dart';
-import 'package:my_app/favorites/data/data_sources/favorites_image_data_source.dart';
-import 'package:my_app/favorites/data/data_sources/favorites_local_data_source.dart';
-import 'package:my_app/favorites/data/models/favorite.dart';
-import 'package:my_app/favorites/data/repositories/favorite_item_repository.dart';
-import 'package:my_app/favorites/data/repositories/favorites_repository.dart';
+import 'package:lovely_coffees/app/app.dart';
+import 'package:lovely_coffees/bootstrap.dart';
+import 'package:lovely_coffees/discover/data/data_sources/discover_data_source.dart';
+import 'package:lovely_coffees/discover/data/repositories/discover_repository.dart';
+import 'package:lovely_coffees/favorites/data/data_sources/favorites_image_data_source.dart';
+import 'package:lovely_coffees/favorites/data/data_sources/favorites_local_data_source.dart';
+import 'package:lovely_coffees/favorites/data/models/favorite.dart';
+import 'package:lovely_coffees/favorites/data/repositories/favorite_item_repository.dart';
+import 'package:lovely_coffees/favorites/data/repositories/favorites_repository.dart';
 import 'package:path_provider/path_provider.dart';
 
 void main() {

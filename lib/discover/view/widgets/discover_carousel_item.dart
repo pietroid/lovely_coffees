@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_app/discover/bloc/discover_bloc.dart';
-import 'package:my_app/discover/data/repositories/discover_repository.dart';
-import 'package:my_app/discover/view/widgets/beating_heart.dart';
-import 'package:my_app/favorites/blocs/favorites/favorites_bloc.dart';
-import 'package:my_app/l10n/l10n.dart';
+import 'package:lovely_coffees/discover/bloc/discover_bloc.dart';
+import 'package:lovely_coffees/discover/data/repositories/discover_repository.dart';
+import 'package:lovely_coffees/discover/view/widgets/beating_heart.dart';
+import 'package:lovely_coffees/favorites/blocs/favorites/favorites_bloc.dart';
+import 'package:lovely_coffees/l10n/l10n.dart';
 
 class DiscoverCarouselItem extends StatefulWidget {
   const DiscoverCarouselItem({super.key});

@@ -1,5 +1,5 @@
 import 'package:isar/isar.dart';
-import 'package:my_app/favorites/data/models/favorite.dart';
+import 'package:lovely_coffees/favorites/data/models/favorite.dart';
 
 class FavoritesLocalDataSource {
   FavoritesLocalDataSource({

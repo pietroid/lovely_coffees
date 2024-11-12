@@ -1,5 +1,5 @@
-import 'package:my_app/discover/data/data_sources/discover_data_source.dart';
-import 'package:my_app/discover/data/models/coffee_image.dart';
+import 'package:lovely_coffees/discover/data/data_sources/discover_data_source.dart';
+import 'package:lovely_coffees/discover/data/models/coffee_image.dart';
 
 class DiscoverRepository {
   DiscoverRepository({

@@ -4,10 +4,10 @@ import 'dart:typed_data';
 import 'package:clock/clock.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:my_app/favorites/data/data_sources/favorites_image_data_source.dart';
-import 'package:my_app/favorites/data/data_sources/favorites_local_data_source.dart';
-import 'package:my_app/favorites/data/models/favorite.dart';
-import 'package:my_app/favorites/data/repositories/favorites_repository.dart';
+import 'package:lovely_coffees/favorites/data/data_sources/favorites_image_data_source.dart';
+import 'package:lovely_coffees/favorites/data/data_sources/favorites_local_data_source.dart';
+import 'package:lovely_coffees/favorites/data/models/favorite.dart';
+import 'package:lovely_coffees/favorites/data/repositories/favorites_repository.dart';
 
 class _MockFavoritesLocalDataSource extends Mock
     implements FavoritesLocalDataSource {}

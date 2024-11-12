@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_app/favorites/blocs/favorite_item/favorite_item_bloc.dart';
-import 'package:my_app/favorites/data/repositories/favorite_item_repository.dart';
+import 'package:lovely_coffees/favorites/blocs/favorite_item/favorite_item_bloc.dart';
+import 'package:lovely_coffees/favorites/data/repositories/favorite_item_repository.dart';
 
 class FavoriteItem extends StatefulWidget {
   const FavoriteItem({

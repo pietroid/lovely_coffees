@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:my_app/favorites/data/data_sources/favorites_image_data_source.dart';
+import 'package:lovely_coffees/favorites/data/data_sources/favorites_image_data_source.dart';
 
 class FavoriteItemRepository {
   FavoriteItemRepository({

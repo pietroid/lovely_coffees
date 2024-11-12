@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:my_app/favorites/data/data_sources/favorites_image_data_source.dart';
+import 'package:lovely_coffees/favorites/data/data_sources/favorites_image_data_source.dart';
 
 import '../../../helpers/shared_fixtures.dart';
 

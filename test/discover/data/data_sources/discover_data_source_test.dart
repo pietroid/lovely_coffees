@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
-import 'package:my_app/discover/data/data_sources/discover_data_source.dart';
+import 'package:lovely_coffees/discover/data/data_sources/discover_data_source.dart';
 
 class _MockHttpClient extends Mock implements http.BaseClient {}
 

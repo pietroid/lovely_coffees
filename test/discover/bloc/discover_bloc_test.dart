@@ -3,9 +3,9 @@ import 'dart:typed_data';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:my_app/discover/bloc/discover_bloc.dart';
-import 'package:my_app/discover/data/models/coffee_image.dart';
-import 'package:my_app/discover/data/repositories/discover_repository.dart';
+import 'package:lovely_coffees/discover/bloc/discover_bloc.dart';
+import 'package:lovely_coffees/discover/data/models/coffee_image.dart';
+import 'package:lovely_coffees/discover/data/repositories/discover_repository.dart';
 
 class _MockDiscoverRepository extends Mock implements DiscoverRepository {}
 

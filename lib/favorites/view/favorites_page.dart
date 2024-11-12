@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_app/favorites/blocs/favorites/favorites_bloc.dart';
-import 'package:my_app/favorites/view/widgets/favorite_item.dart';
-import 'package:my_app/l10n/l10n.dart';
+import 'package:lovely_coffees/favorites/blocs/favorites/favorites_bloc.dart';
+import 'package:lovely_coffees/favorites/view/widgets/favorite_item.dart';
+import 'package:lovely_coffees/l10n/l10n.dart';
 
 class FavoritesPage extends StatelessWidget {
   const FavoritesPage({super.key});

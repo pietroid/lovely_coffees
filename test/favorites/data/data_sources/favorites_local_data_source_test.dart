@@ -16,8 +16,8 @@ void main() {
 // import 'package:flutter_test/flutter_test.dart';
 // import 'package:isar/isar.dart';
 // import 'package:mocktail/mocktail.dart';
-// import 'package:my_app/favorites/data/data_sources/favorites_data_source.dart';
-// import 'package:my_app/favorites/data/models/favorite.dart';
+// import 'package:lovely_coffees/favorites/data/data_sources/favorites_data_source.dart';
+// import 'package:lovely_coffees/favorites/data/models/favorite.dart';
 
 // class _MockIsar extends Mock implements Isar {}
 
