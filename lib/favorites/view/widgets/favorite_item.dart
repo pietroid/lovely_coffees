@@ -31,16 +31,22 @@ class _FavoriteItemState extends State<FavoriteItem> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FavoriteItemBloc, FavoriteItemState>(
-      bloc: _favoriteItemBloc,
-      builder: (context, state) {
-        return switch (state) {
-          FavoriteItemLoading() => const Center(
-              child: CircularProgressIndicator(),
-            ),
-          FavoriteItemLoaded() => Image.memory(state.image),
-        };
-      },
+    return Padding(
+      padding: const EdgeInsets.all(12),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: BlocBuilder<FavoriteItemBloc, FavoriteItemState>(
+          bloc: _favoriteItemBloc,
+          builder: (context, state) {
+            return switch (state) {
+              FavoriteItemLoading() => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              FavoriteItemLoaded() => Image.memory(state.image),
+            };
+          },
+        ),
+      ),
     );
   }
 }

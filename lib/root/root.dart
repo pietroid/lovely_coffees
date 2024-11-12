@@ -44,8 +44,8 @@ class RootContent extends StatelessWidget {
       bottomNavigationBar: NavigationBar(
         selectedIndex: navigationShell.currentIndex,
         destinations: const [
-          NavigationDestination(label: 'Favorites', icon: Icon(Icons.home)),
-          NavigationDestination(label: 'Discover', icon: Icon(Icons.settings)),
+          NavigationDestination(label: 'Favorites', icon: Icon(Icons.favorite)),
+          NavigationDestination(label: 'Discover', icon: Icon(Icons.search)),
         ],
         onDestinationSelected: (index) => navigationShell.goBranch(
           index,

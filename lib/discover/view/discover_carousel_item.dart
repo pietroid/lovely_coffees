@@ -30,27 +30,33 @@ class _DiscoverCarouselItemState extends State<DiscoverCarouselItem> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DiscoverBloc, DiscoverState>(
-      bloc: _discoverBloc,
-      builder: (context, state) {
-        return switch (state) {
-          DiscoverLoading() => const Center(
-              child: CircularProgressIndicator(),
-            ),
-          DiscoverLoaded() => GestureDetector(
-              onDoubleTap: () => context.read<FavoritesBloc>().add(
-                    FavoritesAdd(
-                      image: state.image,
-                      imageUrl: state.name,
-                    ),
-                  ),
-              child: Image.memory(state.image),
-            ),
-          DiscoverFailure() => const Center(
-              child: Text('Failed to load image'),
-            ),
-        };
-      },
+    return Padding(
+      padding: const EdgeInsets.all(12),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: BlocBuilder<DiscoverBloc, DiscoverState>(
+          bloc: _discoverBloc,
+          builder: (context, state) {
+            return switch (state) {
+              DiscoverLoading() => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              DiscoverLoaded() => GestureDetector(
+                  onDoubleTap: () => context.read<FavoritesBloc>().add(
+                        FavoritesAdd(
+                          image: state.image,
+                          imageUrl: state.name,
+                        ),
+                      ),
+                  child: Image.memory(state.image),
+                ),
+              DiscoverFailure() => const Center(
+                  child: Text('Failed to load image'),
+                ),
+            };
+          },
+        ),
+      ),
     );
   }
 }

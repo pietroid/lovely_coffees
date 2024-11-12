@@ -33,12 +33,13 @@ class App extends StatelessWidget {
         ),
       ],
       child: MaterialApp.router(
+        themeMode: ThemeMode.dark,
         routerConfig: AppRouter().router,
         theme: ThemeData(
-          appBarTheme: AppBarTheme(
-            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          ),
           useMaterial3: true,
+        ),
+        darkTheme: ThemeData(
+          brightness: Brightness.dark,
         ),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
