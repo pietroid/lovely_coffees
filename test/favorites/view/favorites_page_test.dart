@@ -62,7 +62,11 @@ void main() {
         ),
       );
 
-      expect(find.text('No favorites'), findsOneWidget);
+      expect(
+        find.text(
+            'There are no favorites yet.\n Go to discover, swipe up to see lovely coffees ☕ \n Double tap to favorite! ❤️ '),
+        findsOneWidget,
+      );
     });
 
     group('Favorites list', () {

@@ -94,7 +94,10 @@ void main() {
 
       await tester.pumpAndSettle();
 
-      expect(find.text('Failed to load image'), findsOneWidget);
+      expect(
+        find.text('💔 Error loading your next lovely coffee'),
+        findsOneWidget,
+      );
     });
   });
 }
