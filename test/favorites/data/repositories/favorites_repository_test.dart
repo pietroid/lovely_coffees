@@ -136,5 +136,14 @@ void main() {
       verify(() => favoritesImageDataSource.saveImageWithPath(any(), any()))
           .called(1);
     });
+
+    test('when calling close it should close the stream', () {
+      final favoritesRepository = FavoritesRepository(
+        localDataSource: favoritesLocalDataSource,
+        imageDataSource: favoritesImageDataSource,
+      )..close();
+
+      expect(favoritesRepository.favorites.isClosed, isTrue);
+    });
   });
 }
