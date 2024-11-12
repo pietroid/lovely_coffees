@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:lovely_coffees/app/app.dart';
 import 'package:lovely_coffees/discover/data/models/coffee_image.dart';
 import 'package:lovely_coffees/discover/data/repositories/discover_repository.dart';
 import 'package:lovely_coffees/favorites/data/repositories/favorite_item_repository.dart';
 import 'package:lovely_coffees/favorites/data/repositories/favorites_repository.dart';
 import 'package:lovely_coffees/root/root.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:rxdart/subjects.dart';
 
 import '../../helpers/shared_fixtures.dart';

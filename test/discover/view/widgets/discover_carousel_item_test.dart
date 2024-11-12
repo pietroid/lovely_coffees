@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:lovely_coffees/discover/data/models/coffee_image.dart';
 import 'package:lovely_coffees/discover/data/repositories/discover_repository.dart';
 import 'package:lovely_coffees/discover/view/widgets/discover_carousel_item.dart';
+import 'package:mocktail/mocktail.dart';
 
 import '../../../helpers/helpers.dart';
 import '../../../helpers/shared_fixtures.dart';

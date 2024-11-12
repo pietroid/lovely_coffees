@@ -3,13 +3,12 @@ import 'package:clock/clock.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:lovely_coffees/favorites/blocs/favorites/favorites_bloc.dart';
 import 'package:lovely_coffees/favorites/data/models/favorite.dart';
 import 'package:lovely_coffees/favorites/data/repositories/favorite_item_repository.dart';
 import 'package:lovely_coffees/favorites/view/favorites_page.dart';
 import 'package:lovely_coffees/favorites/view/widgets/favorite_item.dart';
-
+import 'package:mocktail/mocktail.dart';
 import '../../helpers/helpers.dart';
 import '../../helpers/shared_fixtures.dart';
 

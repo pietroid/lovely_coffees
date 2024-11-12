@@ -1,10 +1,10 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:clock/clock.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:lovely_coffees/favorites/blocs/favorites/favorites_bloc.dart';
 import 'package:lovely_coffees/favorites/data/models/favorite.dart';
 import 'package:lovely_coffees/favorites/data/repositories/favorites_repository.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:rxdart/subjects.dart';
 
 class _MockFavoritesRepository extends Mock implements FavoritesRepository {}
