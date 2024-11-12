@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_app/discover/bloc/discover_bloc.dart';
 import 'package:my_app/discover/data/repositories/discover_repository.dart';
+import 'package:my_app/favorites/blocs/favorites/favorites_bloc.dart';
 
 class DiscoverCarouselItem extends StatefulWidget {
   const DiscoverCarouselItem({super.key});
@@ -36,7 +37,15 @@ class _DiscoverCarouselItemState extends State<DiscoverCarouselItem> {
           DiscoverLoading() => const Center(
               child: CircularProgressIndicator(),
             ),
-          DiscoverLoaded() => Image.memory(state.image),
+          DiscoverLoaded() => GestureDetector(
+              onDoubleTap: () => context.read<FavoritesBloc>().add(
+                    FavoritesAdd(
+                      image: state.image,
+                      imageUrl: state.name,
+                    ),
+                  ),
+              child: Image.memory(state.image),
+            ),
           DiscoverFailure() => const Center(
               child: Text('Failed to load image'),
             ),

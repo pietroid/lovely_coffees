@@ -5,7 +5,8 @@ import 'package:my_app/app/app.dart';
 import 'package:my_app/bootstrap.dart';
 import 'package:my_app/discover/data/data_sources/discover_data_source.dart';
 import 'package:my_app/discover/data/repositories/discover_repository.dart';
-import 'package:my_app/favorites/data/data_sources/favorites_data_source.dart';
+import 'package:my_app/favorites/data/data_sources/favorites_image_data_source.dart';
+import 'package:my_app/favorites/data/data_sources/favorites_local_data_source.dart';
 import 'package:my_app/favorites/data/models/favorite.dart';
 import 'package:my_app/favorites/data/repositories/favorites_repository.dart';
 import 'package:path_provider/path_provider.dart';
@@ -13,15 +14,18 @@ import 'package:path_provider/path_provider.dart';
 void main() {
   bootstrap(() async {
     WidgetsFlutterBinding.ensureInitialized();
-    final isarDirectory = await getApplicationDocumentsDirectory();
+    final appDirectory = await getApplicationDocumentsDirectory();
     final isar = await Isar.open(
       [
         FavoriteSchema,
       ],
-      directory: isarDirectory.path,
+      directory: appDirectory.path,
     );
     final favoritesRepository = FavoritesRepository(
-      dataSource: FavoritesDataSource(isar: isar),
+      localDataSource: FavoritesLocalDataSource(isar: isar),
+      imageDataSource: FavoritesImageDataSource(
+        applicationDirectory: appDirectory.path,
+      ),
     );
     final discoverRepository = DiscoverRepository(
       dataSource: DiscoverDataSource(

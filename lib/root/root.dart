@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_app/favorites/bloc/favorites_bloc.dart';
+import 'package:my_app/favorites/blocs/favorites/favorites_bloc.dart';
 import 'package:my_app/favorites/data/repositories/favorites_repository.dart';
 
 class Root extends StatelessWidget {

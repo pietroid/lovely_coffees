@@ -2,7 +2,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:clock/clock.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:my_app/favorites/bloc/favorites_bloc.dart';
+import 'package:my_app/favorites/blocs/favorites/favorites_bloc.dart';
 import 'package:my_app/favorites/data/models/favorite.dart';
 import 'package:my_app/favorites/data/repositories/favorites_repository.dart';
 import 'package:rxdart/subjects.dart';

@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
@@ -28,6 +30,13 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
           ),
         );
       });
+    });
+
+    on<FavoritesAdd>((event, emit) async {
+      await favoritesRepository.addFavorite(
+        image: event.image,
+        imageUrl: event.imageUrl,
+      );
     });
   }
 

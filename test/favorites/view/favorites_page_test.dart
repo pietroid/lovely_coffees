@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:my_app/favorites/bloc/favorites_bloc.dart';
+import 'package:my_app/favorites/blocs/favorites/favorites_bloc.dart';
 import 'package:my_app/favorites/data/models/favorite.dart';
 import 'package:my_app/favorites/view/favorites_page.dart';
 

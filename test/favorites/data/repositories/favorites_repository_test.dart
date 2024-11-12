@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:my_app/favorites/data/data_sources/favorites_data_source.dart';
+import 'package:my_app/favorites/data/data_sources/favorites_local_data_source.dart';
 import 'package:my_app/favorites/data/models/favorite.dart';
 import 'package:my_app/favorites/data/repositories/favorites_repository.dart';
 

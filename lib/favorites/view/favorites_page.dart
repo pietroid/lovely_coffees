@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_app/favorites/bloc/favorites_bloc.dart';
+import 'package:my_app/favorites/blocs/favorites/favorites_bloc.dart';
+import 'package:my_app/favorites/view/widgets/favorite_item.dart';
 
 class FavoritesPage extends StatelessWidget {
   const FavoritesPage({super.key});
@@ -15,11 +18,9 @@ class FavoritesPage extends StatelessWidget {
               const Center(child: CircularProgressIndicator()),
             FavoritesEmpty() => const Center(child: Text('No favorites')),
             FavoritesSuccess() => ListView.builder(
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text('Favorite $index'),
-                  );
-                },
+                itemBuilder: (context, index) => FavoriteItem(
+                  name: state.favorites[index].pathToImage,
+                ),
                 itemCount: state.favorites.length,
               ),
           };

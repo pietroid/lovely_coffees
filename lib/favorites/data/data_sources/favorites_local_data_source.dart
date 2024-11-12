@@ -1,8 +1,8 @@
 import 'package:isar/isar.dart';
 import 'package:my_app/favorites/data/models/favorite.dart';
 
-class FavoritesDataSource {
-  FavoritesDataSource({
+class FavoritesLocalDataSource {
+  FavoritesLocalDataSource({
     required this.isar,
   });
 
@@ -13,11 +13,9 @@ class FavoritesDataSource {
   }
 
   Future<void> addFavorite(Favorite favorite) async {
-    await isar.favorites.put(favorite);
-  }
-
-  Future<void> removeFavorite(Favorite favorite) async {
-    await isar.favorites.delete(favorite.id);
+    await isar.writeTxn(() async {
+      await isar.favorites.put(favorite);
+    });
   }
 
   Stream<List<Favorite>> watchFavorites() {

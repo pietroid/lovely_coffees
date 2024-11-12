@@ -10,3 +10,13 @@ final class FavoritesUpdate extends FavoritesEvent {
 
   final List<Favorite> favorites;
 }
+
+final class FavoritesAdd extends FavoritesEvent {
+  FavoritesAdd({
+    required this.image,
+    required this.imageUrl,
+  });
+
+  final Uint8List image;
+  final String imageUrl;
+}
