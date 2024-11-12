@@ -29,18 +29,15 @@ void main() {
       }, createFile: (String path) => file);
     });
 
-    test('when saveImageWithPath is called, it call writeAsBytes', () {
-      final fileMock = _MockFile();
-
-      when(() => fileMock.writeAsBytes(fakeImage))
-          .thenAnswer((_) async => fileMock);
+    test('when saveImageWithPath is called, it should call writeAsBytes', () {
+      when(() => file.writeAsBytes(fakeImage)).thenAnswer((_) async => file);
 
       IOOverrides.runZoned(() async {
         final dataSource =
             FavoritesImageDataSource(applicationDirectory: fakeRootPath);
         await dataSource.saveImageWithPath(fakeImageName, fakeImage);
 
-        verify(() => fileMock.writeAsBytes(fakeImage)).called(1);
+        verify(() => file.writeAsBytes(fakeImage)).called(1);
       }, createFile: (String path) => file);
     });
   });
