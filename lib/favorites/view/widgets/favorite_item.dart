@@ -30,6 +30,7 @@ class _FavoriteItemState extends State<FavoriteItem> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FavoriteItemBloc, FavoriteItemState>(
+      bloc: _favoriteItemBloc,
       builder: (context, state) {
         return switch (state) {
           FavoriteItemLoading() => const Center(

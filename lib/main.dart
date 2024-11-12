@@ -8,6 +8,7 @@ import 'package:my_app/discover/data/repositories/discover_repository.dart';
 import 'package:my_app/favorites/data/data_sources/favorites_image_data_source.dart';
 import 'package:my_app/favorites/data/data_sources/favorites_local_data_source.dart';
 import 'package:my_app/favorites/data/models/favorite.dart';
+import 'package:my_app/favorites/data/repositories/favorite_item_repository.dart';
 import 'package:my_app/favorites/data/repositories/favorites_repository.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -27,6 +28,11 @@ void main() {
         applicationDirectory: appDirectory.path,
       ),
     );
+    final favoriteItemRepository = FavoriteItemRepository(
+      imageDataSource: FavoritesImageDataSource(
+        applicationDirectory: appDirectory.path,
+      ),
+    );
     final discoverRepository = DiscoverRepository(
       dataSource: DiscoverDataSource(
         client: http.Client(),
@@ -35,6 +41,7 @@ void main() {
     );
     return App(
       favoritesRepository: favoritesRepository,
+      favoriteItemRepository: favoriteItemRepository,
       discoverRepository: discoverRepository,
     );
   });
