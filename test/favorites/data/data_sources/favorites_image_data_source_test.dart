@@ -15,30 +15,40 @@ void main() {
       file = _MockFile();
     });
     test(
-        'when fetchImageWithPath is called, it should return an image and call readAsBytes',
-        () {
+        'when fetchImageWithPath is called, '
+        'it should return an image and call readAsBytes', () {
       when(() => file.readAsBytes()).thenAnswer((_) async => fakeImage);
 
-      IOOverrides.runZoned(() async {
-        final dataSource =
-            FavoritesImageDataSource(applicationDirectory: fakeRootPath);
-        final image = await dataSource.fetchImageWithPath(fakeImageName);
+      IOOverrides.runZoned(
+        () async {
+          final dataSource =
+              FavoritesImageDataSource(applicationDirectory: fakeRootPath);
+          final image = await dataSource.fetchImageWithPath(fakeImageName);
 
-        verify(() => file.readAsBytes()).called(1);
-        expect(image, fakeImage);
-      }, createFile: (String path) => file);
+          verify(() => file.readAsBytes()).called(1);
+          expect(image, fakeImage);
+        },
+        createFile: (String path) => file,
+      );
     });
 
     test('when saveImageWithPath is called, it should call writeAsBytes', () {
       when(() => file.writeAsBytes(fakeImage)).thenAnswer((_) async => file);
 
-      IOOverrides.runZoned(() async {
-        final dataSource =
-            FavoritesImageDataSource(applicationDirectory: fakeRootPath);
-        await dataSource.saveImageWithPath(fakeImageName, fakeImage);
+      IOOverrides.runZoned(
+        () async {
+          final dataSource = FavoritesImageDataSource(
+            applicationDirectory: fakeRootPath,
+          );
+          await dataSource.saveImageWithPath(
+            fakeImageName,
+            fakeImage,
+          );
 
-        verify(() => file.writeAsBytes(fakeImage)).called(1);
-      }, createFile: (String path) => file);
+          verify(() => file.writeAsBytes(fakeImage)).called(1);
+        },
+        createFile: (String path) => file,
+      );
     });
   });
 }

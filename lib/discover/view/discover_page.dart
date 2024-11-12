@@ -13,7 +13,6 @@ class DiscoverPage extends StatelessWidget {
         return const DiscoverCarouselItem();
       },
       options: CarouselOptions(
-        aspectRatio: 16 / 9,
         enlargeCenterPage: true,
         scrollDirection: Axis.vertical,
       ),

@@ -21,9 +21,11 @@ class _FavoriteItemState extends State<FavoriteItem> {
   void initState() {
     _favoriteItemBloc = FavoriteItemBloc(
       favoriteItemRepository: context.read<FavoriteItemRepository>(),
-    )..add(FavoriteItemLoad(
-        name: widget.name,
-      ));
+    )..add(
+        FavoriteItemLoad(
+          name: widget.name,
+        ),
+      );
     super.initState();
   }
 

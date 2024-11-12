@@ -7,7 +7,6 @@ import 'package:my_app/discover/data/models/coffee_image.dart';
 import 'package:my_app/discover/data/repositories/discover_repository.dart';
 import 'package:my_app/favorites/data/repositories/favorite_item_repository.dart';
 import 'package:my_app/favorites/data/repositories/favorites_repository.dart';
-import 'package:my_app/favorites/view/widgets/favorite_item.dart';
 import 'package:my_app/root/root.dart';
 import 'package:rxdart/subjects.dart';
 

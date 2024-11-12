@@ -15,7 +15,8 @@ class _MockDiscoverRepository extends Mock implements DiscoverRepository {}
 void main() {
   const fakeImageUrl = 'fakeImageUrl';
   final fakeImage = base64Decode(
-      "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=");
+    '/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=',
+  );
   late DiscoverRepository discoverRepository;
 
   group('DiscoverCarouselItemTest', () {

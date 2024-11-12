@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -14,14 +11,13 @@ import 'package:my_app/favorites/view/favorites_page.dart';
 import 'package:my_app/l10n/l10n.dart';
 import 'package:rxdart/subjects.dart';
 
+import '../helpers/shared_fixtures.dart';
+
 class _MockFavoriteRepository extends Mock implements FavoritesRepository {}
 
 class _MockDiscoverRepository extends Mock implements DiscoverRepository {}
 
 void main() {
-  const fakeImageUrl = 'fakeImageUrl';
-  final fakeImage = base64Decode(
-      "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=");
   Widget appWithDefaultRouter() => MaterialApp.router(
         routerConfig: AppRouter().router,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -43,7 +39,7 @@ void main() {
       when(() => discoverRepository.fetchRandomCoffeeImage()).thenAnswer(
         (_) => Future.value(
           CoffeeImage(
-            url: fakeImageUrl,
+            url: fakeImageName,
             image: fakeImage,
           ),
         ),

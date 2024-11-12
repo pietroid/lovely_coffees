@@ -43,7 +43,8 @@ void main() {
     );
 
     blocTest<DiscoverBloc, DiscoverState>(
-      'emits [DiscoverFailure] when DiscoverLoad is added and repository throws',
+      'emits [DiscoverFailure] when DiscoverLoad is '
+      'added and repository throws',
       build: () {
         when(() => repository.fetchRandomCoffeeImage()).thenThrow(Exception());
         return DiscoverBloc(

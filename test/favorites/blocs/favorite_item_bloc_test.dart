@@ -22,7 +22,7 @@ void main() {
       build: () => FavoriteItemBloc(
         favoriteItemRepository: favoriteItemRepository,
       ),
-      act: (bloc) => bloc.add(FavoriteItemLoad(name: fakeImageName)),
+      act: (bloc) => bloc.add(const FavoriteItemLoad(name: fakeImageName)),
       expect: () => <FavoriteItemState>[
         FavoriteItemLoaded(image: fakeImage),
       ],

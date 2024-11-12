@@ -126,10 +126,11 @@ void main() {
         imageUrl: 'https://url/img1.png',
       );
 
-      final capturedFavorite = verify(() =>
-              favoritesLocalDataSource.addFavorite(captureAny<Favorite>()))
-          .captured
-          .first as Favorite;
+      final capturedFavorite = verify(
+        () => favoritesLocalDataSource.addFavorite(
+          captureAny<Favorite>(),
+        ),
+      ).captured.first as Favorite;
       expect(capturedFavorite.pathToImage, 'img1.png');
 
       verify(() => favoritesImageDataSource.saveImageWithPath(any(), any()))

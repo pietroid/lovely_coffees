@@ -17,8 +17,8 @@ void main() {
       dataSource = _MockDiscoverDataSource();
     });
     test(
-        'fetchRandomCoffeeImage should return coffeeImage with fakeImageUrl and fakeImage',
-        () async {
+        'fetchRandomCoffeeImage should return coffeeImage '
+        'with fakeImageUrl and fakeImage', () async {
       when(() => dataSource.fetchRandomCoffeeImageUrl())
           .thenAnswer((_) async => fakeImageUrl);
       when(() => dataSource.fetchCoffeeImage(fakeImageUrl))
