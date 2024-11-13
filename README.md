@@ -19,7 +19,7 @@ Lovely coffees
 First of all, run the build_runner to generate the necessary classes for the app to work properly:
 
 ```
-flutter pub build_runner build
+flutter pub run build_runner build
 ```
 
 To run the app either use the launch configuration in VSCode/Android Studio or use the command:
