@@ -2,7 +2,7 @@
 
 Do you love coffee? This is the right app for you. Come here, grab a coffee, and let's select the best coffee pictures ☕
 
-<img src="https://github.com/user-attachments/assets/6d588037-2254-41f0-93cb-372f7297e361" width="300"/>
+https://github.com/user-attachments/assets/0805199b-6782-4fa7-810c-ba94827e41cc
 
 ![coverage][coverage_badge]
 [![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
@@ -16,7 +16,13 @@ Lovely coffees
 
 ## Getting Started 🚀
 
-To run the desired flavor either use the launch configuration in VSCode/Android Studio or use the command:
+First of all, run the build_runner to generate the necessary classes for the app to work properly:
+
+```
+flutter pub build_runner build
+```
+
+To run the app either use the launch configuration in VSCode/Android Studio or use the command:
 
 ```sh
 # Development
